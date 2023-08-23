@@ -18,13 +18,14 @@ const Catalogue = () => {
             language: 'en-US',
             sort_by: 'popularity.desc',
             include_adult: 'false',
-            include_video: 'false',
+            include_video: 'true',
             region: 'us',
             page: 1,
-            primary_release_year: 1987,
+            primary_release_year: 1999,
            }, 
         }).then( (results) => {
             const apiResults = results.data.results
+            console.log(apiResults)
             setMovies(apiResults);
         })
     }, [] )
@@ -34,7 +35,6 @@ const Catalogue = () => {
         <ul className="catalogue">
             {/* On each loop I will need to create a new LI and within it a new IMG. Inside my IMG I will need to set my src and alt */}
             {movies.map( (movie) => {
-                console.log(movie.overview)
                 return (
                     <li key={movie.id} data-movieid={movie.id} >
                         <Link to={`/movie/${movie.id}`}>
